@@ -2,7 +2,8 @@ pipeline {
     agent any  
 
     tools {
-        maven 'Maven'  
+        gradle 'Gradle' 
+        jdk 'JDK'
     }
 
     stages {
@@ -18,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('test') {
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
