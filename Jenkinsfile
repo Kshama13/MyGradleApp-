@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Kshama13/MyGradleApp-'
+                git branch: 'master', url: 'https://github.com/Kshama13/MyGradleApp-.git'
             }
         }
 
@@ -18,15 +18,15 @@ pipeline {
             }
         }
 
-        stage('Archive') {
+        stage('test') {
             steps {
-                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+                sh 'mvn test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'mvn clean package'
+                sh 'java -jar target/MyGradleApp-1.0-SNAPSHOT.jar'
             }
         }    
     }
