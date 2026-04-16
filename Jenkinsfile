@@ -15,19 +15,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'gradle build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'gradle test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'java -jar target/MyGradleApp-1.0-SNAPSHOT.jar'
+                sh 'gradle run'
             }
         }    
     }
